@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
 
-tools:context="com.example.gedion.weather.MainActivity"
+    tools:context="com.example.gedion.weather.MainActivity"
     tools:layout_editor_absoluteY="81dp"
     tools:layout_editor_absoluteX="0dp">
 
@@ -19,37 +19,36 @@ tools:context="com.example.gedion.weather.MainActivity"
         android:id="@+id/cityTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/dateTextView"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="19dp"
         android:text="City"
         android:textColor="?android:attr/colorControlActivated"
         android:textSize="30sp"
         android:textStyle="normal|bold"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        tools:ignore="HardcodedText,NewApi,RtlHardcoded"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/dateTextView" />
     <TextView
         android:text="0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tempTextView" android:textSize="120sp"
         android:textColor="@android:color/black"
-        android:layout_marginStart="38dp"
         tools:ignore="HardcodedText"
-        android:layout_marginBottom="30dp"
-        android:layout_alignBottom="@+id/weatherDesctextView"
-        android:layout_alignParentStart="true" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/dateTextView"
+        android:layout_alignLeft="@+id/dateTextView"
+        android:layout_marginLeft="11dp" />
     <TextView
         android:text="°F"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView4"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp" android:layout_marginTop="30dp"
-        android:layout_alignTop="@+id/tempTextView" android:layout_toRightOf="@+id/tempTextView"
-        android:layout_toEndOf="@+id/tempTextView" android:textSize="30sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="25dp"
+        android:textSize="30sp"
         android:textColor="@android:color/black"
-        tools:ignore="HardcodedText,RtlHardcoded" />
+        tools:ignore="HardcodedText,RtlHardcoded"
+        android:layout_alignTop="@+id/tempTextView"
+        android:layout_toRightOf="@+id/cityTextView" />
 
     <ImageView
         android:id="@+id/weatherImageView"
@@ -73,20 +72,95 @@ tools:context="com.example.gedion.weather.MainActivity"
         tools:ignore="HardcodedText"
         android:layout_below="@+id/cityTextView"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp" />
+        android:layout_marginStart="18dp" />
 
     <TextView
         android:id="@+id/weatherDesctextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:text="Weather Description"
         android:textColor="?attr/colorControlActivated"
         android:textSize="30sp"
         android:textStyle="normal|bold|italic"
         tools:ignore="HardcodedText"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/weatherImageView"
-        android:layout_alignStart="@+id/tempTextView" />
+        android:layout_alignStart="@+id/dateTextView" />
+
+    <Button
+        android:id="@+id/pressureButton"
+        style="@style/AppTheme"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="Pressure"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/WindButton"
+        style="@style/AppTheme"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/tempButton"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="Wind"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/tempButton"
+        style="@style/AppTheme"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="MinMaxTemp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_above="@+id/levelButton"
+        android:layout_toEndOf="@+id/pressureButton" />
+
+    <Button
+        android:id="@+id/humidityButton"
+        style="@style/AppTheme"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="Humidity"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_above="@+id/pressureButton"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/levelButton"
+        style="@style/AppTheme"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        android:text="Sea and Grnd Level"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tempButton" />
 
 
 </RelativeLayout>

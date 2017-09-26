@@ -1,28 +1,28 @@
 package com.example.gedion.weather;
 
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.util.Log;
-        import android.widget.ImageView;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import java.lang.*;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import com.android.volley.Request;
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.JsonObjectRequest;
-        import com.android.volley.toolbox.Volley;
-
-        import org.json.JSONArray;
-        import org.json.JSONException;
-        import org.json.JSONObject;
-
-        import java.text.SimpleDateFormat;
-        import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -32,6 +32,13 @@ public class MainActivity extends AppCompatActivity
     TextView weatherTextView;
     TextView cityTextView;
     ImageView weatherImageView;
+    Button pressureButton;
+    Button humidityButton;
+    Button tempButton;
+    Button levelButton;
+    Button WindButton;
+
+
 
 
 
@@ -45,19 +52,26 @@ public class MainActivity extends AppCompatActivity
         dateTextView = (TextView) findViewById(R.id.dateTextView);
         weatherTextView = (TextView) findViewById(R.id.weatherDesctextView);
         cityTextView = (TextView) findViewById(R.id.cityTextView);
+        pressureButton = (Button) findViewById(R.id.pressureButton);
+        humidityButton = (Button) findViewById(R.id.humidityButton);
+        tempButton = (Button) findViewById(R.id.tempButton);
+        levelButton = (Button) findViewById(R.id.levelButton);
+        WindButton = (Button) findViewById(R.id.WindButton);
+
+
+
 
 
         weatherImageView = (ImageView) findViewById(R.id.weatherImageView);
 
         dateTextView.setText(getCurrentDate());
 
-        String url = "http://api.openweathermap.org/data/2.5/weather?q=rajkot,in&appid=eab90ed14f553d1ca4708e25605f11b1&units=Imperial";
+        String url = "http://api.openweathermap.org/data/2.5/weather?q=surat,in&appid=eab90ed14f553d1ca4708e25605f11b1&units=Imperial";
         JsonObjectRequest jsObjRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject responseObject) {
-                        //tempTextView.setText("Response: " + response.toString());
                         Log.v("WEATHER", "Response: " + responseObject.toString());
 
                         try
@@ -73,11 +87,7 @@ public class MainActivity extends AppCompatActivity
 
                             String temp = Integer.toString((int) Math.round(mainJSONObject.getDouble("temp")));
                             String weatherDescription = firstWeatherObject.getString("description");
-                           // String iconName=firstWeatherObject.getString("icon");
                             String city = responseObject.getString("name");
-                            //Log.v("TempString", "Response: " + temp);
-                            //Log.v("WeatherString", "Response: " + weatherDescription);
-                            //Log.v("CityString", "Response: " + city);
 
                             tempTextView.setText(temp);
                             weatherTextView.setText(weatherDescription);
@@ -103,6 +113,47 @@ public class MainActivity extends AppCompatActivity
         // Access the RequestQueue through your singleton class.
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsObjRequest);
+
+        pressureButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        PressureActivity.class);
+                startActivity(myIntent);
+            }
+        });
+        humidityButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        humidityActivity.class);
+                startActivity(myIntent);
+            }
+        });
+        tempButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        tempActivity.class);
+                startActivity(myIntent);
+            }
+        });
+        levelButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        levelActivity.class);
+                startActivity(myIntent);
+            }
+        });
+       WindButton.setOnClickListener(new OnClickListener() {
+            public void onClick(View arg0) {
+                // Start NewActivity.class
+                Intent myIntent = new Intent(MainActivity.this,
+                        windActivity.class);
+                startActivity(myIntent);
+            }
+        });
         }
 
 

@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PressureActivity" >
+        </activity>
+        <activity android:name=".humidityActivity" >
+        </activity>
+        <activity android:name=".tempActivity" >
+        </activity>
+        <activity android:name=".levelActivity" >
+        </activity>
+        <activity android:name=".windActivity" >
+        </activity>
     </application>
 
 </manifest>
